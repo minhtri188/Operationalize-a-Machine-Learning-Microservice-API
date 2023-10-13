@@ -1,4 +1,6 @@
-[![CircleCI](https://app.circleci.com/pipelines/github/minhtri188/Operationalize-a-Machine-Learning-Microservice-API.svg?style=svg)](https://app.circleci.com/pipelines/github/minhtri188/Operationalize-a-Machine-Learning-Microservice-API)
+[![<ORG_NAME>](https://circleci.com/gh/minhtri188/Operationalize-a-Machine-Learning-Microservice-API.svg?style=svg)](https://app.circleci.com/pipelines/github/minhtri188/Operationalize-a-Machine-Learning-Microservice-API)
+
+
 ## Project Overview
 
 In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
