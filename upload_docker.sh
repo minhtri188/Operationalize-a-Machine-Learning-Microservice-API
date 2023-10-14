@@ -6,14 +6,14 @@
 # Step 1:
 # Create dockerpath
 # dockerpath=<your docker ID/path>
-dockerpath="trithm/udacity-microservices-espeon"
+dockerpath=minhtri188/udacity-microservices-espeon
 
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 docker login
-docker tag udacity-microservices-espeon $dockerpath
+docker tag udacity-microservices-espeon $dockerpath:latest
 
 # Step 3:
 # Push image to a docker repository
-docker push $dockerpath
+docker push $dockerpath:latest
