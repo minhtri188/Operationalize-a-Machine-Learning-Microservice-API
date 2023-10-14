@@ -1,6 +1,5 @@
 [![<ORG_NAME>](https://circleci.com/gh/minhtri188/Operationalize-a-Machine-Learning-Microservice-API.svg?style=svg)](https://app.circleci.com/pipelines/github/minhtri188/Operationalize-a-Machine-Learning-Microservice-API)
 
-
 ## Project Overview
 
 In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
@@ -26,26 +25,43 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 
 ## Setup the Environment
 
-* Create a virtualenv with Python 3.7 and activate it. Refer to this link for help on specifying the Python version in the virtualenv. 
+* Install Python 3.7
 ```bash
-python3 -m pip install --user virtualenv
+sudo apt install libssl-dev libncurses5-dev libsqlite3-dev libreadline-dev libtk8.6 libgdm-dev libdb4o-cil-dev libpcap-dev
+cd ~
+wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz
+tar xvf Python-3.7.9.tar.xz
+cd Python-3.7.9
+./configure
+sudo make
+sudo make altinstall
+```
+* Create a virtualenv with Python 3.7 and activate it.Refer to this link for help on specifying the Python version in the virtualenv.
+```bash
+py -m pip install --user virtualenv
 # You should have Python 3.7 available in your host. 
 # Check the Python path using `which python3`
 # Use a command similar to this one:
-python3 -m virtualenv --python=<path-to-Python3.7> .devops
-source .devops/bin/activate
+py -m virtualenv .devops
+source .devops/Scripts/activate
 ```
 * Run `make install` to install the necessary dependencies
 
 ### Running `app.py`
+#### 1. Standalone:  
+Run `python app.py`
 
-1. Standalone:  `python app.py`
-2. Run in Docker:  `./run_docker.sh`
-3. Run in Kubernetes:  `./run_kubernetes.sh`
+#### 2. Run in Docker:
+1. Run `./run_docker.sh` to dockerize the application and containerize it.
+2. Run `./make_prediction.sh` to evaluate the local predict API.
 
-### Kubernetes Steps
+#### 3. Run in Kubernetes:  
+1. Run `./upload_docker.sh` to upload the docker image into docker hub.
+2. Run `minikube start` to start the local kubernetes cluster
+3. Run `kubectl config view` to check that the cluster has a certificate-authority and server, and to see the default settings for kubernetes.
+4. Run `./run_kubernetes.sh` when the pod is in [Running] state
+5. Run `./make_prediction.sh` while calling `./run_kubernetes.sh`
 
-* Setup and Configure Docker locally
-* Setup and Configure Kubernetes locally
-* Create Flask app in Container
-* Run via kubectl
+##### 4. Clean up kubernetes cluster
+1. Run `minikube delete`
+2. Run `minikube stop`
